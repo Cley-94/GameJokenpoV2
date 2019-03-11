@@ -17,10 +17,7 @@ namespace JokenpoConsoleApp.Service
             ChoiceModel choiceModel = new ChoiceModel();
             ChoiceEnum choiceValue;
 
-            if (Enum.TryParse(choicePlayers, out choiceValue))/*TryParse retorna um boolean informando se  a conversão foi bem sucedida. 
-                A variável marcada com "out"(choiceValue) é quem vai receber o valor convertido para o seu respectivo tipo(ChoiceEnum).
-                Pro caso do enum, a busca sempre vai ser feita em todas as chaves e valores do tipo
-                de enum especificado(ChoiceEnum). Chave(Pedra) = Valor(1)*/ 
+            if (Enum.TryParse(choicePlayers, out choiceValue))
             {
                 choiceModel.ChoiceEnum = choiceValue;
             }
