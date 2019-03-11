@@ -5,8 +5,8 @@ using JokenpoConsoleApp.Service;
 
 namespace Tests
 {
-    [TestFixture]//Notation responsável por indicar ao NUnit que esta classe 'Tests' é uma classe de teste
-    public class Tests
+    [TestFixture]
+    public class Tests 
     {
         private readonly JudgeService _judgeService;
         public Tests()
