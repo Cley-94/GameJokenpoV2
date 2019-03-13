@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using JokenpoConsoleApp.Model;
 using JokenpoConsoleApp.Service;
 using JokenpoConsoleApp.Interfaces;
@@ -14,6 +13,9 @@ namespace JokenpoConsoleApp
             //Setup DI
             var serviceProvider = new ServiceCollection()
             .AddScoped<IJudgeService, JudgeService>()
+            .AddScoped<IChoiceService, RockChoiceService>()
+            .AddScoped<IChoiceService, ScissorsChoiceService>()
+            .AddScoped<IChoiceService, PaperChoiceService>()
             .BuildServiceProvider();
             var judgeResult = serviceProvider.GetService<IJudgeService>();
 
@@ -40,7 +42,7 @@ namespace JokenpoConsoleApp
                 choiceCPU = rdn.Next(1, 3).ToString();
                 var verifyChoiceCPU = judgeResult.CheckChoicePlayers(choiceCPU);
 
-                var result = judgeResult.JudgeDefinesWinner(verifyChoiceUser.ChoiceEnum.ToString(), verifyChoiceCPU.ChoiceEnum.ToString());
+                var result = judgeResult.JudgeDefinesWinner(verifyChoiceUser.ChoiceEnum, verifyChoiceCPU.ChoiceEnum);
 
                 Console.WriteLine(result.ResultMessage);
             }

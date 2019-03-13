@@ -1,17 +1,22 @@
 ﻿using System;
+using System.Linq;
 using JokenpoConsoleApp.Enums;
 using JokenpoConsoleApp.Model;
 using JokenpoConsoleApp.Interfaces;
+using JokenpoConsoleApp.Constantes;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace JokenpoConsoleApp.Service
 {
     public class JudgeService : IJudgeService
     {
-        private readonly string MESSAGE_USER_WINS = "você é o vencedor! Parabéns!";
-        private readonly string MESSAGE_CPU_WINS = "o computador é o vencedor!";
-        private readonly string GAME_TIE = "houve empate no jogo!";
         ResultGameModel resultGameModel = new ResultGameModel();
+        private IServiceProvider _serviceProvider;
 
+        public JudgeService(IServiceProvider serviceProvider)
+        {
+            _serviceProvider = serviceProvider;
+        }
         public ChoiceModel CheckChoicePlayers(string choicePlayers)
         {
             ChoiceModel choiceModel = new ChoiceModel();
@@ -29,59 +34,25 @@ namespace JokenpoConsoleApp.Service
             return choiceModel;
         }
 
-        public ResultGameModel JudgeDefinesWinner(string choicePlayer, string choiceComputer)
+        public ResultGameModel JudgeDefinesWinner(ChoiceEnum choicePlayer, ChoiceEnum choiceComputer)
         {
             string winner = string.Empty;
 
             if (choicePlayer == choiceComputer)
             {
-                winner = GAME_TIE;
+                winner = AnswerWinnerConst.GAME_TIE;
                 resultGameModel.ResultadoEnum = ResultadoEnum.Tie;
             }
 
-            if (choicePlayer == "Pedra")
+            else
             {
-                if(choiceComputer == "Tesoura")
-                {
-                    winner = MESSAGE_USER_WINS;
-                    resultGameModel.ResultadoEnum = ResultadoEnum.UserWins;
-                }
-                if (choiceComputer == "Papel")
-                {
-                    winner = MESSAGE_CPU_WINS;
-                    resultGameModel.ResultadoEnum = ResultadoEnum.ComputerWins;
-                }
-            }
+                var services = _serviceProvider.GetServices<IChoiceService>();
+                var service = services.First(x => x.GetEnumType() == choicePlayer);
 
-            if(choicePlayer == "Papel")
-            {
-                if(choiceComputer == "Pedra")
-                {
-                    winner = MESSAGE_USER_WINS;
-                    resultGameModel.ResultadoEnum = ResultadoEnum.UserWins;
-                }
-                if (choiceComputer == "Tesoura")
-                {
-                    winner = MESSAGE_CPU_WINS;
-                    resultGameModel.ResultadoEnum = ResultadoEnum.ComputerWins;
-                }
-            }
-
-            if(choicePlayer == "Tesoura")
-            {
-                if(choiceComputer == "Pedra")
-                {
-                    winner = MESSAGE_CPU_WINS;
-                    resultGameModel.ResultadoEnum = ResultadoEnum.ComputerWins;
-                }
-                if (choiceComputer == "Papel")
-                {
-                    winner = MESSAGE_USER_WINS;
-                    resultGameModel.ResultadoEnum = ResultadoEnum.UserWins;
-                }
+                resultGameModel = service.GetWinner(choiceComputer);
             }
             resultGameModel.ResultMessage = "Você escolheu " + choicePlayer + " enquanto o computador escolheu "
-                + choiceComputer + ", portanto, " + winner;
+                + choiceComputer + ", portanto, " + resultGameModel.ResultMessage;
             return resultGameModel;
         }
     }

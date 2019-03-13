@@ -5,7 +5,13 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokenpoConsoleApp", "JokenpoConsoleApp\JokenpoConsoleApp.csproj", "{BE076246-2E1B-44AD-B0D5-CC12BA5F9EE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jokenpo.Tests", "Jokenpo.Tests\Jokenpo.Tests.csproj", "{46FFAD90-A3CC-4168-9FA5-68561256BE29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JudgeService.Tests", "Jokenpo.Tests\JudgeService.Tests.csproj", "{46FFAD90-A3CC-4168-9FA5-68561256BE29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RockChoiceServiceTests", "RockChoiceServiceTests\RockChoiceServiceTests.csproj", "{53F7B1C7-A63B-4DA3-A351-8EE477AF64A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaperChoiceServiceTests", "PaperChoiceServiceTests\PaperChoiceServiceTests.csproj", "{AD259E1C-2E27-4A7D-B758-D916DE8F7E9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScissorsChoiceTests", "ScissorsChoiceTests\ScissorsChoiceTests.csproj", "{C35A936C-67EE-45DF-BC44-18ABB6FD85C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{46FFAD90-A3CC-4168-9FA5-68561256BE29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46FFAD90-A3CC-4168-9FA5-68561256BE29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46FFAD90-A3CC-4168-9FA5-68561256BE29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53F7B1C7-A63B-4DA3-A351-8EE477AF64A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53F7B1C7-A63B-4DA3-A351-8EE477AF64A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53F7B1C7-A63B-4DA3-A351-8EE477AF64A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53F7B1C7-A63B-4DA3-A351-8EE477AF64A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD259E1C-2E27-4A7D-B758-D916DE8F7E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD259E1C-2E27-4A7D-B758-D916DE8F7E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD259E1C-2E27-4A7D-B758-D916DE8F7E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD259E1C-2E27-4A7D-B758-D916DE8F7E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C35A936C-67EE-45DF-BC44-18ABB6FD85C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C35A936C-67EE-45DF-BC44-18ABB6FD85C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C35A936C-67EE-45DF-BC44-18ABB6FD85C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C35A936C-67EE-45DF-BC44-18ABB6FD85C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
